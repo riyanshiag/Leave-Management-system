@@ -16,7 +16,7 @@ class employee(models.Model):
         (Employee,'Employee'),
     )
     user=models.OneToOneField(User,on_delete=models.CASCADE)
-    name=models.CharField(max_length=200,null=False,blank=False)
+    name=models.CharField(max_length=200,null=False)
     profile=models.CharField(max_length=200,default=Employee,choices=Position)
     past_leaves=models.IntegerField(validators=[MinValueValidator(0),
                                        MaxValueValidator(10)],default=0)
@@ -27,7 +27,7 @@ class employee(models.Model):
 class leave(models.Model):
      name=models.CharField(max_length=200,null=False,blank=False)
      designation=models.CharField(max_length=200,null=False,blank=False)
-     reason=models.CharField(max_length=1000,null=False,blank=False)
+     reason=models.CharField(max_length=1000)
      start_date=models.DateTimeField(null=False,blank=False,default=timezone.now)
      end_date=models.DateTimeField(null=False,blank=False)
      
